@@ -5,7 +5,7 @@ const path = require('path'); // modulo para trabajar con rutas de archivos y di
 //const marked = require('marked'); // modulo para links buenos
 const markdownLinkExtractor = require('markdown-link-extractor');
 const fetch = require('node-fetch');
-let mdLinks = {};
+//let mdLinks = {};
 let validate = false;
 let stats = false;
 
@@ -13,7 +13,7 @@ const route = process.argv[2];
 let absoluRoute = path.resolve(route);
 // console.log(route);
 
-// guardar mis archivos en un arreglo
+// guardar mis rutas de archivos en un arreglo
 const arrayFile = (absoluRoute)=>{
   const fileAll = [];
   return new Promise((resolve,reject) =>{
@@ -30,48 +30,36 @@ const myFileMd = (fileAll) => {
   });
 }
 
-// leo un archivo //
-/* const myFile = (fileAll) => {
-  return new Promise((resolve, reject) => {
-    let file;
-    try {
-      file = fs.readFile(fileAll, 'utf8', (err, data) => {
-      resolve(data);
-      })
-    }catch (err) {
-      reject('No es un archivo o directorio');
-    }
-  });
-} */
-
+// Leo mi archivo
 const myFile = (fileAll) => {
   return new Promise((resolve, reject) => {
-    fs.readFile(fileAll, 'utf8', function(err, data){
-      if (err) throw err;
+    fs.readFile(fileAll, 'utf8', (err, data) => {
+      if (err) // throw err;
+      console.log(err);
+      else
       resolve(data.toString());
     })
   });
 }
 
 
-arrayFile(absoluRoute).then(myFileMd).then(myFile).then(resultado => {
+arrayFile(absoluRoute).then(myFileMd).then(resultado => {
   console.log(resultado);
 }).catch(() => {
-  console.log('error al mostrar las promesas');
+  console.log('error al mostrar las promesas'.red);
 });
 
+//module.exports=mdLinks;
+
+// extraer links
+//const markdownLinkExtractor = require
 
 
-// ** path es la ruta (absoluta o relativa) y objeto es un arreglo **//
-// RECURSION //
-
-/* mdLinks.mdLinks = (path, objeto) => {
-  return new Promise((resolve, reject) => { // mi promesa trae una solucion o una falla
-  // si es distinta  a mi ruta muestro mje de falla con color //
-    if (!path) reject('Ingresar ruta'.red);
-    path = path1.resolve(path); 
-    if (objeto) {
-      if (objeto.validate) validate = true;
-      if (objeto.stats) stats = true; validate = true;
-    }
-  })*/
+//MARCE
+/* // funcion para saber si es carpeta o archivo
+const mdLinksFileOrFolder = function nombre (path, option) {
+console.log(path);
+const rutaUsuario = String(path).trim(); //el trim elimina los epacios
+if (String(mdLinksFileOrFolder).indexOf())
+}
+ */

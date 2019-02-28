@@ -3,6 +3,9 @@ const mdLinks = require('./mdLinks.js');
 
 module.exports = mdLinks;
  */
+const md=require('./mdLinks.js');
+
+
 
 const mdLinks = require('./md-links.js').mdLinks;
 
@@ -25,4 +28,3 @@ if (require.main === module) {
     console.error(error);
   });
 }
-module.exports = mdLinks;
