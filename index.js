@@ -11,4 +11,5 @@ if (require.main === module){
     console.log(absolutePath.magenta.bgWhite);
   }
   console.log('Si es un archivo md = '.bgBlue + route.red);
+
 }

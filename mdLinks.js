@@ -15,20 +15,22 @@ module.exports = {
   },
 
 // Leer el archivo
-readFile: (myFileMd) => {
-  // console.log('Hola'); //probando
-  const markdown = fs.readFileSync(myFileMd).toString();
-  // console.log(markdown.yellow);   
-  const links = markdownLinkExtractor(markdown);
-  return new Promise((resolve, reject) => {
-    links.forEach(function (link) {
+  readFile: (myFileMd) => {
+    // console.log('Hola'); //probando
+    const markdown = fs.readFileSync(myFileMd).toString();
+    // console.log(markdown.yellow);   
+    const links = markdownLinkExtractor(markdown);
+    const array=[];
+    return new Promise((resolve, reject) => {
+      links.forEach(function (link) {
       console.log(link.green);
+      array.push(link);
     });
-    resolve(links);
+      console.log('En este Archivo md se encontraron '.yellow + links.length + ' links'.yellow);
+      resolve(links);
   });
-},
-
-// Valido mis link buenos y malos
+}
+//array
 
 }
 
