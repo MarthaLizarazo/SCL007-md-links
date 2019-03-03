@@ -8,7 +8,7 @@ if (require.main === module){
   let absolutePath = path.resolve(route);
   if (mdlink.myFileMd(absolutePath)) {
     mdlink.readFile(absolutePath); // ruta absoluta
-    console.log(absolutePath.green);
+    console.log(absolutePath.magenta.bgWhite);
   }
-  console.log(route.red);
+  console.log('Si es un archivo md = '.bgBlue + route.red);
 }
