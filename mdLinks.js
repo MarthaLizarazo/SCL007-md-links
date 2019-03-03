@@ -20,21 +20,23 @@ module.exports = {
     const markdown = fs.readFileSync(myFileMd).toString();
     // console.log(markdown.yellow);   
     const links = markdownLinkExtractor(markdown);
-    const array=[];
+    const arrayUrl=[];
     return new Promise((resolve, reject) => {
       links.forEach(function (link) {
       console.log(link.green);
-      array.push(link);
+      arrayUrl.push(link);
+      fetchArray=fetch(arrayUrl)
+      .then(res => {
+        console.log(res.ok);
+        console.log(res.status);
+        console.log(res.statusText);
     });
+      });
       console.log('En este Archivo md se encontraron '.yellow + links.length + ' links'.yellow);
       resolve(links);
-  });
+    });
+  },
 }
-//array
-
-}
-
-
 /* // llamando a mis promesas
 myFileMd(absoluRoute).then(readFile).then(resultado => {
   console.log(resultado);

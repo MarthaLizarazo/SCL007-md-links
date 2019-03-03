@@ -9,6 +9,7 @@ if (require.main === module){
   if (mdlink.myFileMd(absolutePath)) {
     mdlink.readFile(absolutePath); // ruta absoluta
     console.log(absolutePath.magenta.bgWhite);
+    //mdlink.validateUrl();
   }
   console.log('Si es un archivo md = '.bgBlue + route.red);
 
