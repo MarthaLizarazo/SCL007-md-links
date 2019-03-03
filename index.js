@@ -7,10 +7,8 @@ if (require.main === module){
   const route = process.argv[2];
   let absolutePath = path.resolve(route);
   if (mdlink.myFileMd(absolutePath)) {
-    mdlink.readFile(absolutePath); // ruta absoluta
+    mdlink.readFile(absolutePath) // ruta absoluta
     console.log(absolutePath.magenta.bgWhite);
-    //mdlink.validateUrl();
   }
   console.log('Si es un archivo md = '.bgBlue + route.red);
-
 }

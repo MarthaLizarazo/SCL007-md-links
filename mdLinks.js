@@ -14,7 +14,7 @@ module.exports = {
     });
   },
 
-// Leer el archivo
+// Leer el archivo, extraer link y guardarlos
   readFile: (myFileMd) => {
     // console.log('Hola'); //probando
     const markdown = fs.readFileSync(myFileMd).toString();
@@ -25,12 +25,17 @@ module.exports = {
       links.forEach(function (link) {
       console.log(link.green);
       arrayUrl.push(link);
-      fetchArray=fetch(arrayUrl)
-      .then(res => {
-        console.log(res.ok);
-        console.log(res.status);
-        console.log(res.statusText);
-    });
+        const text = links.text;
+        const url = links.url;
+        fetchArray=fetch(arrayUrl).then((res) => {
+        const linkObject = { // CAMBIAR NOMBRE
+          href: url,
+          text: text,
+          file: markdown
+        };
+        console.log(res);
+        return linkObject;
+      });
       });
       console.log('En este Archivo md se encontraron '.yellow + links.length + ' links'.yellow);
       resolve(links);
