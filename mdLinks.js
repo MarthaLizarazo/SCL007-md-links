@@ -27,21 +27,28 @@ module.exports = {
       arrayUrl.push(link);
         const text = links.text;
         const url = links.url;
-        fetchArray=fetch(arrayUrl).then((res) => {
-        const linkObject = { // CAMBIAR NOMBRE
-          href: url,
-          text: text,
-          file: markdown
-        };
-        console.log(res);
-        return linkObject;
-      });
+        fetchArray=fetch(arrayUrl).then((response) => {
+        return response.status();
+        console.log(response.status);
+      }).then((statusText)=>{
+        console.log('status= ', response.statusText);
+      }).catch((err) => {
+        console.error(err);
+    });
       });
       console.log('En este Archivo md se encontraron '.yellow + links.length + ' links'.yellow);
       resolve(links);
     });
   },
 }
+/* 
+const linkObject = {
+  href: url,
+  text: text,
+  file: markdown
+};
+return linkObject; */
+
 /* // llamando a mis promesas
 myFileMd(absoluRoute).then(readFile).then(resultado => {
   console.log(resultado);
