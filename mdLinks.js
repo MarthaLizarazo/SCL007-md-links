@@ -22,16 +22,23 @@ module.exports = {
     const links = markdownLinkExtractor(markdown);
     const arrayUrl=[];
     return new Promise((resolve, reject) => {
-      links.forEach(function (link) {
+      links.forEach((link) => {
       console.log(link.green);
       arrayUrl.push(link);
         const text = links.text;
-        const url = links.url;
-        fetchArray=fetch(arrayUrl).then((response) => {
-        return response.status();
-        console.log(response.status);
-      }).then((statusText)=>{
-        console.log('status= ', response.statusText);
+        const href = links.url;
+        const fetchArray=fetch(arrayUrl).then((res) => {
+          const linkObjeto = {
+            href: res.url,
+            text: res.text,
+            file: res.markdown,
+            statusLink: res.status,
+            statusText: res.statusText
+          };
+          return linkObjeto;
+          
+      }).then((statusLink)=>{
+        console.log('status= ', res.statusLink);
       }).catch((err) => {
         console.error(err);
     });
@@ -41,13 +48,6 @@ module.exports = {
     });
   },
 }
-/* 
-const linkObject = {
-  href: url,
-  text: text,
-  file: markdown
-};
-return linkObject; */
 
 /* // llamando a mis promesas
 myFileMd(absoluRoute).then(readFile).then(resultado => {

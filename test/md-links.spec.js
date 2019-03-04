@@ -14,7 +14,7 @@ describe(
 describe(
   'mdLinks.markdownLinkExtractor() Deberia extraer los links de un texto',
   () => {
-    test('Deberia retornar un arreglo con un objecto para un texto con enlaces', () => {
+    test('Deberia retornar un arreglo con un objecto para un texto con links', () => {
       expect(mdLinks.markdownLinkExtractor('', '[GitHub](http://github.com)', 6))
         .toEqual([{ 
           'href': 'http://github.com',
@@ -23,7 +23,7 @@ describe(
           'text': 'GitHub' 
         }]);
     });
-    test('Deberia retornar un arreglo vacio si no  hay enlaces', () => {
+    test('Deberia retornar un arreglo vacio si no  hay link', () => {
       expect(mdLinks.markdownLinkExtractor('', 'hola, este es el contenido', 9)).toEqual([]);
     });
   });
